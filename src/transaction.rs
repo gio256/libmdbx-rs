@@ -229,6 +229,14 @@ where
     pub fn cursor<'txn>(&'txn self, db: &Database<'txn>) -> Result<Cursor<'txn, K>> {
         Cursor::new(self, db)
     }
+
+    pub fn open_db_with_flags<'txn>(
+        &'txn self,
+        name: Option<&str>,
+        flags: DatabaseFlags,
+    ) -> Result<Database<'txn>> {
+        Database::new(self, name, flags.bits())
+    }
 }
 
 pub(crate) fn txn_execute<F: FnOnce(*mut ffi::MDBX_txn) -> T, T>(
@@ -243,13 +251,6 @@ impl<'env, E> Transaction<'env, RW, E>
 where
     E: EnvironmentKind,
 {
-    fn open_db_with_flags<'txn>(
-        &'txn self,
-        name: Option<&str>,
-        flags: DatabaseFlags,
-    ) -> Result<Database<'txn>> {
-        Database::new(self, name, flags.bits())
-    }
 
     /// Opens a handle to an MDBX database, creating the database if necessary.
     ///
