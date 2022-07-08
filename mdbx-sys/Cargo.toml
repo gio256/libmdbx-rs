@@ -1,13 +1,7 @@
 [package]
 name = "mdbx-sys"
-version = "0.11.7-6"
+version = "0.11.8-0"
 edition = "2021"
-authors = [
-    "Dan Burkert <dan@danburkert.com>",
-    "Victor Porof <vporof@mozilla.com>",
-    "Kerollmops <renault.cle@gmail.com>",
-    "Artem Vorotnikov <artem@vorotnikov.me>",
-]
 license = "Apache-2.0"
 description = "Rust bindings for libmdbx."
 documentation = "https://docs.rs/mdbx-sys"
@@ -24,9 +18,5 @@ name = "mdbx_sys"
 libc = "0.2"
 
 [build-dependencies]
-cmake = "0.1"
 cc = "1.0"
-bindgen = { version = "0.59", default-features = false, features = ["runtime"] }
-
-[features]
-cmake-build = []
+bindgen = { version = "0.60", default-features = false, features = ["runtime"] }

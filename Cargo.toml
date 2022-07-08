@@ -1,11 +1,6 @@
 [package]
 name = "libmdbx"
-version = "0.1.5"
-authors = [
-  "Dan Burkert <dan@danburkert.com>",
-  "Victor Porof <vporof@mozilla.com>",
-  "Artem Vorotnikov <artem@vorotnikov.me>",
-]
+version = "0.1.6"
 edition = "2021"
 license = "Apache-2.0"
 description = "Idiomatic and safe MDBX wrapper."
@@ -31,12 +26,9 @@ libc = "0.2"
 parking_lot = "0.12"
 thiserror = "1"
 
-ffi = { package = "mdbx-sys", version = "=0.11.7-6", path = "./mdbx-sys" }
+ffi = { package = "mdbx-sys", version = "=0.11.8-0", path = "./mdbx-sys" }
 
 lifetimed-bytes = { version = "0.1", optional = true }
-
-[features]
-cmake = ["ffi/cmake-build"]
 
 [dev-dependencies]
 criterion = "0.3"
